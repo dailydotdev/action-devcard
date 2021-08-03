@@ -2,9 +2,19 @@
   "name": "action-devcard",
   "version": "1.0.0",
   "description": "GitHub Action to download the devcard from daily.dev",
+  "private": true,
+  "author": {
+    "name": "Ole-Martin Bratteng",
+    "email": "ole-martin@bratteng.com"
+  },
+  "contributors": [
+    {
+      "name": "Ole-Martin Bratteng",
+      "email": "ole-martin@bratteng.com"
+    }
+  ],
   "main": "index.js",
-  "repository": "git@github.com:omBratteng/action-devcard.git",
-  "author": "Ole-Martin Bratteng <ole-martin@bratteng.com>",
-  "license": "BSD-3-Clause",
-  "private": true
+  "repository": "github:omBratteng/action-devcard",
+  "bugs": "https://github.com/omBratteng/action-devcard/issues",
+  "license": "BSD-3-Clause"
 }
