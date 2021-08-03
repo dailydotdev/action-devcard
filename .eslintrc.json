@@ -1,0 +1,44 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2021,
+		"sourceType": "module",
+		"project": "./tsconfig.json",
+		"warnOnUnsupportedTypeScriptVersion": true
+	},
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
+	"globals": {
+		"global": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"ignorePatterns": ["**/*.min.*", "**/dist/**"],
+	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"semi": false,
+				"singleQuote": true,
+				"tabWidth": 4,
+				"trailingComma": "all",
+				"useTabs": true,
+				"printWidth": 127
+			}
+		],
+		"@typescript-eslint/type-annotation-spacing": "error",
+		"@typescript-eslint/no-empty-function": "warn",
+		"@typescript-eslint/ban-ts-comment": "warn",
+		"@typescript-eslint/no-explicit-any": "warn",
+		"@typescript-eslint/explicit-module-boundary-types": "warn"
+	}
+}

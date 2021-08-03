@@ -13,8 +13,21 @@
       "email": "ole-martin@bratteng.com"
     }
   ],
-  "main": "index.js",
+  "scripts": {
+    "lint": "eslint 'src/**/*.ts' --cache"
+  },
+  "main": "src/index.ts",
   "repository": "github:omBratteng/action-devcard",
   "bugs": "https://github.com/omBratteng/action-devcard/issues",
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "@types/node": "^16.4.10",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
+  }
 }
