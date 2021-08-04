@@ -1,0 +1,6 @@
+name: 'devcard'
+description: 'GitHub Action to download the devcard from daily.dev'
+author: 'Ole-Martin Bratteng'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
