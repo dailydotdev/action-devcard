@@ -20,6 +20,7 @@
   "repository": "github:omBratteng/action-devcard",
   "bugs": "https://github.com/omBratteng/action-devcard/issues",
   "license": "BSD-3-Clause",
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^16.4.10",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
