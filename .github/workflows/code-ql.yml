@@ -16,15 +16,6 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-20.04
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript' ]
 
     steps:
     -
@@ -35,7 +26,7 @@ jobs:
       name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
-        languages: ${{ matrix.language }}
+        languages: javascript
         config-file: ./.github/codeql/codeql-config.yml
 
     -
