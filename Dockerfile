@@ -18,6 +18,8 @@ FROM node:16.6.1-slim
 ENTRYPOINT [ "node" ]
 WORKDIR /app
 
+ENV NODE_ENV=production
+
 COPY --from=build /src/dist /app
 
 CMD [ "/app/index.js" ]
