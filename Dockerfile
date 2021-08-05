@@ -20,6 +20,13 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+RUN apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y \
+		git \
+	\
+	&& rm -rf /var/lib/apt/lists/*
+
+
 COPY --from=build /src/dist /app
 
 CMD [ "/app/index.js" ]
