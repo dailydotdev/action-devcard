@@ -5,12 +5,6 @@ import fetch from 'node-fetch'
 import fs from 'fs/promises'
 import path from 'path'
 import jsdom from 'jsdom'
-// import imageType from 'image-type'
-
-// if (process.env.NODE_ENV !== 'production') {
-// 	const dotenv = await import('dotenv')
-// 	dotenv.config()
-// }
 
 process.on('unhandledRejection', (error) => {
 	throw error
@@ -55,10 +49,6 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 			const res = await fetch(devcardURL(hash))
 			devCardContent = await res.text()
 			const images = await fetchImagesFromSVG(devCardContent)
-
-			// devCardContent = devCardContent.replaceAll('<image', '<img')
-			// devCardContent = devCardContent.replaceAll('xlink:href', 'src')
-			// devCardContent = devCardContent.replaceAll('></image>', '/>')
 
 			for (const image in images) {
 				if (Object.prototype.hasOwnProperty.call(images, image)) {
