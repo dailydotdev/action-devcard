@@ -1,5 +1,6 @@
 name: test-local-action
 on:
+  workflow_dispatch:
   push:
     paths:
       - "src/**"
@@ -21,4 +22,4 @@ jobs:
         uses: ./
         with:
           hash: ${{ secrets.DEVCARD_HASH }}
-          branch: devcard
+          commit_branch: devcard
