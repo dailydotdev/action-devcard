@@ -5,6 +5,33 @@ inputs:
   hash:
     description: 'The hash of the devcard'
     required: true
+
+  # Set to "${{ github.token }}" or "${{ secrets.GITHUB_TOKEN }}"
+  # GITHUB_TOKEN is a special auto-generated token restricted to current repository, which is used to push files in it
+  token:
+    description: GitHub Token used to commit the devcard
+    default: ${{ github.token }}
+    required: false
+
+  # Branch used to commit rendered metrics
+  commit_branch:
+    description: Branch used to commit the devcard
+    default: ""
+    required: false
+
+  # Commit message
+  # Use "${filename}" to display filename
+  commit_message:
+    description: Commit message
+    default: Update ${filename}
+    required: false
+
+  # Commit filename
+  commit_filename:
+    description: Filename to save devcard to
+    default: devcard.svg
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
