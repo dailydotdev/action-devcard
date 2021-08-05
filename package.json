@@ -24,10 +24,13 @@
   "dependencies": {
     "@actions/core": "^1.4.0",
     "@actions/github": "^5.0.0",
+    "image-type": "^4.1.0",
+    "jsdom": "^16.7.0",
     "node-fetch": "^2.6.1",
     "simple-git": "^2.42.0"
   },
   "devDependencies": {
+    "@types/jsdom": "^16.2.13",
     "@types/node": "^16.4.10",
     "@types/node-fetch": "^2.5.12",
     "@typescript-eslint/eslint-plugin": "^4.29.0",

@@ -4,6 +4,8 @@ import sgit from 'simple-git'
 import fetch from 'node-fetch'
 import fs from 'fs/promises'
 import path from 'path'
+import jsdom from 'jsdom'
+// import imageType from 'image-type'
 
 // if (process.env.NODE_ENV !== 'production') {
 // 	const dotenv = await import('dotenv')
@@ -14,11 +16,33 @@ process.on('unhandledRejection', (error) => {
 	throw error
 })
 
+const convertImageToBase64 = async (url: string): Promise<string> => {
+	const resp = await fetch(url)
+	const contentType = resp.headers.get('content-type')
+
+	return `data:${contentType};base64,${(await resp.buffer()).toString('base64')}`
+}
+
+const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> => {
+	const dom = new jsdom.JSDOM(svg)
+
+	dom.serialize()
+
+	const images: Record<string, string> = {}
+
+	dom.window.document.querySelectorAll('image').forEach((image) => {
+		const src = image.getAttribute('xlink:href')
+		src && (images[src] = src)
+	})
+
+	return images
+}
+
 const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${hash}.svg`
 
 ;(async function () {
 	try {
-		let devCardContent = null
+		let devCardContent = ''
 
 		const hash = core.getInput('hash')
 		const token = core.getInput('token')
@@ -26,8 +50,28 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 		const message = core.getInput('commit_message')
 		const filename = core.getInput('commit_filename')
 
-		core.debug(`Fetching devcard for hash: ${hash}`)
-		console.log(devcardURL(hash))
+		// Fetch the latest devcard
+		try {
+			const res = await fetch(devcardURL(hash))
+			devCardContent = await res.text()
+			const images = await fetchImagesFromSVG(devCardContent)
+
+			// devCardContent = devCardContent.replaceAll('<image', '<img')
+			// devCardContent = devCardContent.replaceAll('xlink:href', 'src')
+			// devCardContent = devCardContent.replaceAll('></image>', '/>')
+
+			for (const image in images) {
+				if (Object.prototype.hasOwnProperty.call(images, image)) {
+					devCardContent = devCardContent.replace(image, await convertImageToBase64(images[image]))
+				}
+			}
+
+			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), { recursive: true })
+			await fs.writeFile(path.join(`/tmp`, filename), devCardContent)
+			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
+		} catch (error) {
+			console.debug(error)
+		}
 
 		const committer = {
 			commit: true,
@@ -87,19 +131,6 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 		}
 		console.log('Previous render sha', committer.sha ?? '(none)')
 
-		// Fetch the latest devcard
-		try {
-			const res = await fetch(devcardURL(hash))
-			devCardContent = await res.buffer()
-
-			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), { recursive: true })
-
-			await fs.writeFile(path.join(`/tmp`, filename), devCardContent)
-			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
-		} catch (error) {
-			console.debug(error)
-		}
-
 		// Compare previous to current devcard
 		const git = sgit()
 		const sha = await git.hashObject(path.join(`/tmp`, filename))
@@ -114,7 +145,7 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 				...github.context.repo,
 				path: filename,
 				message: committer.message,
-				content: devCardContent?.toString('base64') as string,
+				content: Buffer.from(devCardContent).toString('base64'),
 				branch: committer.branch,
 				...(committer.sha ? { sha: committer.sha } : {}),
 			})
