@@ -5,6 +5,7 @@ import fetch from 'node-fetch'
 import fs from 'fs/promises'
 import path from 'path'
 import jsdom from 'jsdom'
+import sharp from 'sharp'
 
 process.on('unhandledRejection', (error) => {
 	throw error
@@ -58,6 +59,18 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 
 			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), { recursive: true })
 			await fs.writeFile(path.join(`/tmp`, filename), devCardContent)
+
+			if (filename.endsWith('.png')) {
+				await sharp(path.join(`/tmp`, filename))
+					.png({
+						quality: 100,
+					})
+					.toFile(path.join(`/tmp`, `_${filename}`))
+
+				await fs.rename(path.join(`/tmp`, `_${filename}`), path.join(`/tmp`, filename))
+				console.log('Converted devcard to PNG', 'ok')
+			}
+
 			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
 		} catch (error) {
 			console.debug(error)
@@ -67,7 +80,7 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 			commit: true,
 			message: message.replace(/[$][{]filename[}]/g, filename),
 			branch: branch || github.context.ref.replace(/^refs[/]heads[/]/, ''),
-			sha: '',
+			sha: undefined,
 		}
 
 		const octokit = github.getOctokit(token)
@@ -131,11 +144,12 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 		}
 
 		if (committer.commit) {
+			const fileContent = await fs.readFile(path.join(`/tmp`, filename))
 			await octokit.rest.repos.createOrUpdateFileContents({
 				...github.context.repo,
 				path: filename,
 				message: committer.message,
-				content: Buffer.from(devCardContent).toString('base64'),
+				content: fileContent.toString('base64'),
 				branch: committer.branch,
 				...(committer.sha ? { sha: committer.sha } : {}),
 			})
