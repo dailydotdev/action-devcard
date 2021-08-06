@@ -10,7 +10,7 @@ on:
       - "yarn.lock"
 
 jobs:
-  test:
+  svg:
     runs-on: ubuntu-latest
     steps:
       -
@@ -23,3 +23,20 @@ jobs:
         with:
           hash: ${{ secrets.DEVCARD_HASH }}
           commit_branch: devcard
+          commit_message: "chore: update ${filename}"
+
+  png:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout code
+        uses: actions/checkout@v2.3.4
+
+      -
+        name: Run location action
+        uses: ./
+        with:
+          hash: ${{ secrets.DEVCARD_HASH }}
+          commit_branch: devcard
+          commit_message: "chore: update ${filename}"
+          commit_filename: devcard.png
