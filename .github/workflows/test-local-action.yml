@@ -22,7 +22,7 @@ jobs:
 
       - name: Modify action.yaml
         run: |
-          sed -E 's|ghcr.io/ombratteng/action-devcard:[0-9\.]+|Dockerfile|i' action.yml > local-action.yml
+          sed -E 's|docker://ghcr.io/ombratteng/action-devcard:[0-9\.]+|Dockerfile|i' action.yml > local-action.yml
           mv -f local-action.yml action.yml
 
       - uses: actions/cache@v2.1.6
