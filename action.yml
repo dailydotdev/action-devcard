@@ -33,4 +33,4 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/ombratteng/action-devcard:1.0.0'
