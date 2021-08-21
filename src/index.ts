@@ -44,6 +44,9 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 		const branch = core.getInput('commit_branch')
 		const message = core.getInput('commit_message')
 		const filename = core.getInput('commit_filename')
+		const dryrun = core.getBooleanInput('dryrun')
+
+		console.log(`Dryrun`, dryrun)
 
 		// Fetch the latest devcard
 		try {
@@ -143,7 +146,7 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 			committer.commit = false
 		}
 
-		if (committer.commit) {
+		if (committer.commit && !dryrun) {
 			const fileContent = await fs.readFile(path.join(`/tmp`, filename))
 			await octokit.rest.repos.createOrUpdateFileContents({
 				...github.context.repo,

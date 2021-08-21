@@ -26,6 +26,11 @@ inputs:
     default: devcard.svg
     required: false
 
+  dryrun:
+    description: 'If true, no changes will be made to the repo'
+    default: false
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
