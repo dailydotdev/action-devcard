@@ -6,7 +6,7 @@
 
 ```yaml
 - name: devcard
-  uses: omBratteng/action-devcard@1.1.0
+  uses: omBratteng/action-devcard@1.1.1
   with:
     hash: ${{ secrets.DEVCARD_HASH }}
 ```
@@ -35,7 +35,7 @@ This will save the devcard as PNG and commit to a separate branch named `devcard
 
 ```yaml
 - name: devcard
-   uses: omBratteng/action-devcard@1.1.0
+   uses: omBratteng/action-devcard@1.1.1
    with:
      hash: ${{ secrets.DEVCARD_HASH }}
      commit_branch: devcard
