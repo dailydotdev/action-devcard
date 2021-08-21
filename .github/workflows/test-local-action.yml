@@ -2,7 +2,10 @@ name: test-local-action
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
+      - ".github/workflows/test-local-action.yml"
       - "src/**"
       - "Dockerfile"
       - "action.yml"
@@ -10,12 +13,34 @@ on:
       - "yarn.lock"
 
 jobs:
-  svg:
+  prepare:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout code
         uses: actions/checkout@v2.3.4
+
+      - name: Modify action.yaml
+        run: |
+          sed -E 's|ghcr.io/ombratteng/action-devcard:[0-9\.]+|Dockerfile|i' action.yml > local-action.yml
+          mv -f local-action.yml action.yml
+
+      - uses: actions/cache@v2.1.6
+        id: cache-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+
+  svg:
+    runs-on: ubuntu-latest
+    needs:
+      - prepare
+    steps:
+      - uses: actions/cache@v2.1.6
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
 
       -
         name: Run location action
@@ -28,10 +53,14 @@ jobs:
 
   png:
     runs-on: ubuntu-latest
+    needs:
+      - prepare
     steps:
-      -
-        name: Checkout code
-        uses: actions/checkout@v2.3.4
+      - uses: actions/cache@v2.1.6
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
 
       -
         name: Run location action
