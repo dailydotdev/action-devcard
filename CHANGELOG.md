@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- chore: setup CI
+- docs: fix the `Unreleased` link
+
 ## [1.1.1] - 2021-08-22
 
 - docs: more comprehensive `README`
 
 ## [1.1.0] - 2021-08-22
 
-- fix: use the correct format for running docker image 421c5a6
-- chore: add dependabot for npm dependencies 57f546d
+- fix: use the correct format for running docker image
+- chore: add dependabot for npm dependencies
 
 ## [1.0.0] - 2021-08-22
 

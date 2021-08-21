@@ -1,0 +1,49 @@
+name: continuous-integration
+
+on:
+  pull_request_target:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/**
+
+env:
+  CI: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-20.04
+    steps:
+      -
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        name: Checkout code
+        uses: actions/checkout@v2.3.4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      -
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        name: Checkout code
+        uses: actions/checkout@v2.3.4
+
+      -
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 16
+          cache: yarn
+
+      -
+        name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      -
+        name: Lint
+        run: |
+          yarn lint
+
+      -
+        name: Build
+        run: |
+          yarn build
