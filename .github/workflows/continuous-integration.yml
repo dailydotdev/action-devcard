@@ -12,7 +12,7 @@ env:
   CI: true
 
 jobs:
-  prepare:
+  lint-build:
     runs-on: ubuntu-20.04
     steps:
       -
