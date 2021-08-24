@@ -33,13 +33,13 @@ const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> 
 	return images
 }
 
-const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${hash}.svg?r=${new Date().valueOf()}`
+const devcardURL = (devcard_id: string): string => `https://api.daily.dev/devcards/${devcard_id}.svg?r=${new Date().valueOf()}`
 
 ;(async function () {
 	try {
 		let devCardContent = ''
 
-		const hash = core.getInput('hash')
+		const devcard_id = core.getInput('devcard_id')
 		const token = core.getInput('token')
 		const branch = core.getInput('commit_branch')
 		const message = core.getInput('commit_message')
@@ -50,7 +50,7 @@ const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${h
 
 		// Fetch the latest devcard
 		try {
-			const res = await fetch(devcardURL(hash))
+			const res = await fetch(devcardURL(devcard_id))
 			devCardContent = await res.text()
 			const images = await fetchImagesFromSVG(devCardContent)
 

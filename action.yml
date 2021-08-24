@@ -5,7 +5,7 @@ branding:
   icon: user-check
   color: black
 inputs:
-  hash:
+  devcard_id:
     description: 'The hash of the devcard'
     required: true
 
