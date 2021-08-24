@@ -33,7 +33,7 @@ const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> 
 	return images
 }
 
-const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${hash}.svg`
+const devcardURL = (hash: string): string => `https://api.daily.dev/devcards/${hash}.svg?r=${new Date().valueOf()}`
 
 ;(async function () {
 	try {
