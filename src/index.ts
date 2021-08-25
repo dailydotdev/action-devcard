@@ -6,6 +6,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import jsdom from 'jsdom'
 import sharp from 'sharp'
+import { validate } from 'uuid'
 
 process.on('unhandledRejection', (error) => {
 	throw error
@@ -35,6 +36,12 @@ const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> 
 
 const devcardURL = (devcard_id: string): string => `https://api.daily.dev/devcards/${devcard_id}.svg?r=${new Date().valueOf()}`
 
+const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
+	// An UUIDv4 regex without hyphens
+	const uuid4Regex = /^([0-9A-F]{8})([0-9A-F]{4})(4[0-9A-F]{3})([89AB][0-9A-F]{3})([0-9A-F]{12})$/i
+	return validate(devcard_id.replace(uuid4Regex, '$1-$2-$3-$4-$5'))
+}
+
 ;(async function () {
 	try {
 		let devCardContent = ''
@@ -45,6 +52,10 @@ const devcardURL = (devcard_id: string): string => `https://api.daily.dev/devcar
 		const message = core.getInput('commit_message')
 		const filename = core.getInput('commit_filename')
 		const dryrun = core.getBooleanInput('dryrun')
+
+		if (!validateDevcardIdAsUUID(devcard_id)) {
+			throw new Error(`Invalid devcard_id: ${devcard_id}`)
+		}
 
 		console.log(`Dryrun`, dryrun)
 

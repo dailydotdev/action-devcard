@@ -27,13 +27,15 @@
     "jsdom": "^17.0.0",
     "node-fetch": "^2.6.1",
     "sharp": "^0.29.0",
-    "simple-git": "^2.44.0"
+    "simple-git": "^2.44.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.7.1",
     "@types/node-fetch": "^2.5.12",
     "@types/sharp": "^0.28.5",
+    "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "@vercel/ncc": "0.29.2",
