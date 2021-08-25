@@ -86,9 +86,3 @@ jobs:
         with:
           devcard_id: 0d0d3d7b5198466e94b5bcc3de
           dryrun: true
-
-      -
-        name: Successful run
-        if: ${{ failure() }}
-        run: |
-          true
