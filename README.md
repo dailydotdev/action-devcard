@@ -1,12 +1,12 @@
 # GitHub Action for fetching the devcard from [daily.dev](https://api.daily.dev/get?r=omBratteng)
 
-[![GitHub](https://img.shields.io/github/license/omBratteng/action-devcard)](LICENSE)
+[![GitHub](https://img.shields.io/github/license/dailydotdev/action-devcard)](LICENSE)
 
 ## Example usasge
 
 ```yaml
 - name: devcard
-  uses: omBratteng/action-devcard@1.2.0
+  uses: dailydotdev/action-devcard@1.2.0
   with:
     hash: ${{ secrets.DEVCARD_HASH }}
 ```
@@ -35,7 +35,7 @@ This will save the devcard as PNG and commit to a separate branch named `devcard
 
 ```yaml
 - name: devcard
-   uses: omBratteng/action-devcard@1.2.0
+   uses: dailydotdev/action-devcard@1.2.0
    with:
      hash: ${{ secrets.DEVCARD_HASH }}
      commit_branch: devcard

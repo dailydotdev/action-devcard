@@ -20,7 +20,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3.5.0
         with:
-          images: ghcr.io/ombratteng/action-devcard
+          images: ghcr.io/dailydotdev/action-devcard
           tags: |
             type=sha
             type=semver,pattern={{version}}

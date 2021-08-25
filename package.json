@@ -18,8 +18,8 @@
     "build": "ncc build --out dist --target es2020 --license license.txt src/index.ts"
   },
   "main": "src/index.ts",
-  "repository": "github:omBratteng/action-devcard",
-  "bugs": "https://github.com/omBratteng/action-devcard/issues",
+  "repository": "github:dailydotdev/action-devcard",
+  "bugs": "https://github.com/dailydotdev/action-devcard/issues",
   "license": "BSD-3-Clause",
   "dependencies": {
     "@actions/core": "^1.5.0",
