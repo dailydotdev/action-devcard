@@ -9,14 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2021-08-25
 
-- docs: fix the `Unreleased` link f9d4789
-- chore: setup CI d7a2a76
-- build(deps-dev): bump @typescript-eslint/parser from 4.29.2 to 4.29.3 (#4) a879b54
-- chore(deps-dev): bump @typescript-eslint/eslint-plugin from 4.29.2 to 4.29.3 (#5) 94c8422
-- chore: rename `prepare` to `lint-build` 1790efd
-- feat: add cache invalidator to the image URL closes #3 d0582cb
-- fix: rename `hash` to `devcard_id` closes #1 6bd74ea
-- feat: add uuid validation of the devcard ID d651c29
+- docs: fix the `Unreleased` link
+- chore: setup CI
+- build(deps-dev): bump @typescript-eslint/parser from 4.29.2 to 4.29.3
+- chore(deps-dev): bump @typescript-eslint/eslint-plugin from 4.29.2 to 4.29.3
+- chore: rename `prepare` to `lint-build`
+- feat: add cache invalidator to the image URL closes #3
+- fix: rename `hash` to `devcard_id` closes #1
+- feat: add uuid validation of the devcard ID
 
 ## [1.1.1] - 2021-08-22
 
