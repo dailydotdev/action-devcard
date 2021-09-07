@@ -25,25 +25,25 @@
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
     "jsdom": "^17.0.0",
-    "node-fetch": "^2.6.1",
-    "sharp": "^0.29.0",
-    "simple-git": "^2.44.0",
+    "node-fetch": "^3.0.0",
+    "sharp": "^0.29.1",
+    "simple-git": "^2.45.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.7.13",
-    "@types/node-fetch": "^2.5.12",
-    "@types/sharp": "^0.28.5",
+    "@types/node-fetch": "^3.0.3",
+    "@types/sharp": "^0.28.6",
     "@types/uuid": "^8.3.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
-    "@vercel/ncc": "0.29.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@vercel/ncc": "0.30.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2"
   }
 }
