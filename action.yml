@@ -1,9 +1,9 @@
-name: 'devcard'
+name: '@dailydotdev/devcard'
 description: 'GitHub Action to download the devcard from daily.dev'
 author: 'Ole-Martin Bratteng'
 branding:
   icon: user-check
-  color: black
+  color: gray-dark
 inputs:
   devcard_id:
     description: 'The hash of the devcard'
