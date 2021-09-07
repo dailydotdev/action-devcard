@@ -220,10 +220,10 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@^16.7.2":
-  version "16.7.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.2.tgz#0465a39b5456b61a04d98bd5545f8b34be340cb7"
-  integrity sha512-TbG4TOx9hng8FKxaVrCisdaxKxqEwJ3zwHoCWXZ0Jw6mnvTInpaB99/2Cy4+XxpXtjNv9/TgfGSvZFyfV/t8Fw==
+"@types/node@*", "@types/node@^16.7.13":
+  version "16.7.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.13.tgz#86fae356b03b5a12f2506c6cf6cd9287b205973f"
+  integrity sha512-pLUPDn+YG3FYEt/pHI74HmnJOWzeR+tOIQzUx93pi9M7D8OE7PSLr97HboXwk5F+JS+TLtWuzCOW97AHjmOXXA==
 
 "@types/parse5@*":
   version "6.0.1"
@@ -1359,10 +1359,10 @@ node-abi@^2.21.0:
   dependencies:
     semver "^5.4.1"
 
-node-addon-api@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-4.0.0.tgz#ac128f43eff7fac4b5f5ef2f39d6d7c2709efead"
-  integrity sha512-ALmRVBFzfwldBfk3SbKfl6+PVMXiCPKZBEfsJqB/EjXAMAI+MfFrEHR+GMRBuI162DihZ1QjEZ8ieYKuRCJ8Hg==
+node-addon-api@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-4.1.0.tgz#f1722f1f60793584632ffffb79e12ca042c48bd0"
+  integrity sha512-Zz1o1BDX2VtduiAt6kgiUl8jX1Vm3NMboljFYKQJ6ee8AGfiTvM2mlZFI3xPbqjs80rCQgiVJI/DjQ/1QJ0HwA==
 
 node-fetch@^2.6.1:
   version "2.6.1"
@@ -1636,14 +1636,14 @@ set-blocking@~2.0.0:
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
 
-sharp@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.29.0.tgz#1fa302bd5f60292138c823aa0905609f64d710ba"
-  integrity sha512-mdN1Up0eN+SwyForPls59dWO0nx64J1XRQYy5ZiKSADAccGYCB10UAGJHSVG9VObzJdhHqrVJzQcq6gx8USyoA==
+sharp@^0.29.1:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.29.1.tgz#f60b50f24f399464a24187c86bd2da41aae50b85"
+  integrity sha512-DpgdAny9TuS+oWCQ7MRS8XyY9x6q1+yW3a5wNx0J3HrGuB/Jot/8WcT+lElHY9iJu2pwtegSGxqMaqFiMhs4rQ==
   dependencies:
     color "^4.0.1"
     detect-libc "^1.0.3"
-    node-addon-api "^4.0.0"
+    node-addon-api "^4.1.0"
     prebuild-install "^6.1.4"
     semver "^7.3.5"
     simple-get "^3.1.0"
