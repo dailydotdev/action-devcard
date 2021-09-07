@@ -46,7 +46,7 @@ jobs:
         name: Run location action
         uses: ./
         with:
-          devcard_id: ${{ secrets.DEVCARD_HASH }}
+          devcard_id: ${{ secrets.DEVCARD_ID }}
           dryrun: true
 
   png:
@@ -64,7 +64,7 @@ jobs:
         name: Run location action
         uses: ./
         with:
-          devcard_id: ${{ secrets.DEVCARD_HASH }}
+          devcard_id: ${{ secrets.DEVCARD_ID }}
           commit_filename: devcard.png
           dryrun: true
 

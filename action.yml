@@ -6,7 +6,7 @@ branding:
   color: gray-dark
 inputs:
   devcard_id:
-    description: 'The hash of the devcard'
+    description: 'The ID of the devcard'
     required: true
 
   token:
