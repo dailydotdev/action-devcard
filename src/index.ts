@@ -169,8 +169,10 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 			})
 		}
 	} catch (error) {
-		core.setFailed(error.message)
-		console.debug(error)
-		process.exit(1)
+		if (error instanceof Error) {
+			core.setFailed(error.message)
+			console.debug(error)
+			process.exit(1)
+		}
 	}
 })()
