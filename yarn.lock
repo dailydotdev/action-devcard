@@ -229,10 +229,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-6.0.1.tgz#f8ae4fbcd2b9ba4ff934698e28778961f9cb22ca"
   integrity sha512-ARATsLdrGPUnaBvxLhUlnltcMgn7pQG312S8ccdYlnyijabrX9RN/KN/iGj9Am96CoW8e/K9628BA7Bv4XHdrA==
 
-"@types/sharp@^0.28.6":
-  version "0.28.6"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.28.6.tgz#41e4f904b39e5269328080e0bd1d008ae5bc8b21"
-  integrity sha512-AjKjo5vk5mkcTrWL0U1zFUdCp/uqLebvbe7ezAJx0tgp6ST9JmfsYK1q1lpjfPM5S1YQ1wr5uboPSu2S8UO9yw==
+"@types/sharp@^0.29.1":
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.29.1.tgz#99fed5efb144b8b56188c4dfed3a114679413f40"
+  integrity sha512-UOQu+7MY/TRlVNjVuNtLpAlekKWNZNZzYtIDHRzPloKRkPW8jlPh1RsUIhyG98OibzzneqoAhb31C5j42ERFwA==
   dependencies:
     "@types/node" "*"
 
