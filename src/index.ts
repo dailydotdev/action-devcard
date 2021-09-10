@@ -113,16 +113,18 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 		} catch (error) {
 			if (/not found/i.test(`${error}`)) {
 				const {
-					data: {
-						object: { sha },
-					},
+					data: { object },
 				} = await octokit.rest.git.getRef({
 					...github.context.repo,
 					ref: github.context.ref.replace(/^refs[/]/, ''),
 				})
 
-				console.log('Committer branch current sha', sha)
-				await octokit.rest.git.createRef({ ...github.context.repo, ref: `refs/heads/${committer.branch}`, sha })
+				console.log('Committer branch current sha', object.sha)
+				await octokit.rest.git.createRef({
+					...github.context.repo,
+					ref: `refs/heads/${committer.branch}`,
+					sha: object.sha,
+				})
 				console.log('Committer head branch status', '(created)')
 			} else throw error
 		}
