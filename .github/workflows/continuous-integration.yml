@@ -1,7 +1,7 @@
 name: continuous-integration
 
 on:
-  pull_request_target:
+  pull_request:
   push:
     branches:
       - main
@@ -16,14 +16,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       -
-        if: ${{ github.actor == 'dependabot[bot]' }}
-        name: Checkout code
-        uses: actions/checkout@v2.3.4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      -
-        if: ${{ github.actor != 'dependabot[bot]' }}
         name: Checkout code
         uses: actions/checkout@v2.3.4
 
