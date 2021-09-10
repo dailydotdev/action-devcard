@@ -6,7 +6,7 @@
 
 ```yaml
 - name: devcard
-  uses: dailydotdev/action-devcard@2.0.1
+  uses: dailydotdev/action-devcard@2.0.2
   with:
     devcard_id: ${{ secrets.DEVCARD_ID }}
 ```
@@ -35,7 +35,7 @@ This will save the devcard as PNG and commit to a separate branch named `devcard
 
 ```yaml
 - name: devcard
-   uses: dailydotdev/action-devcard@2.0.1
+   uses: dailydotdev/action-devcard@2.0.2
    with:
      devcard_id: ${{ secrets.DEVCARD_ID }}
      commit_branch: devcard
