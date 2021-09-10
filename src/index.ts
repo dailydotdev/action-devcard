@@ -34,7 +34,8 @@ const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> 
 	return images
 }
 
-const devcardURL = (devcard_id: string): string => `https://api.daily.dev/devcards/${devcard_id}.svg?r=${new Date().valueOf()}`
+const devcardURL = (devcard_id: string): string =>
+	`https://api.daily.dev/devcards/${devcard_id}.svg?r=${new Date().valueOf()}&ref=action`
 
 const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 	// An UUIDv4 regex without hyphens
