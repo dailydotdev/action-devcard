@@ -54,6 +54,11 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 		const filename = core.getInput('commit_filename')
 		const dryrun = core.getBooleanInput('dryrun')
 
+		// throw an error if filename is empty
+		if (!filename || filename.length === 0) {
+			throw new Error('Filename is required')
+		}
+
 		if (!validateDevcardIdAsUUID(devcard_id)) {
 			throw new Error(`Invalid devcard_id: ${devcard_id}`)
 		}
