@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2021-09-10
+
+- bumped dependencies
+- added `ref` to devcard URL for analytics purposes
+
 ## [2.0.0] - 2021-09-07
 
 - released under @dailydotdev
@@ -36,7 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release [`1854869`](https://github.com/dailydotdev/vscode-nftables/commit/1854869)
 
-[Unreleased]: https://github.com/dailydotdev/action-devcard/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/dailydotdev/action-devcard/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/dailydotdev/action-devcard/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/dailydotdev/action-devcard/releases/tag/2.0.0
 [1.2.0]: https://github.com/ombratteng/action-devcard/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/ombratteng/action-devcard/compare/1.1.0...1.1.1
