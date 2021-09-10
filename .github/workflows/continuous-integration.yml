@@ -1,7 +1,7 @@
 name: continuous-integration
 
 on:
-  pull_request_target:
+  pull_request:
   push:
     branches:
       - main
@@ -16,14 +16,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       -
-        if: ${{ github.actor == 'dependabot[bot]' }}
-        name: Checkout code
-        uses: actions/checkout@v2.3.4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      -
-        if: ${{ github.actor != 'dependabot[bot]' }}
         name: Checkout code
         uses: actions/checkout@v2.3.4
 
@@ -47,3 +39,32 @@ jobs:
         name: Build
         run: |
           yarn build
+
+  test-local-action:
+    runs-on: ubuntu-20.04
+    name: "[${{ matrix.commit_filename }}] test-local-action"
+    strategy:
+      fail-fast: false
+      matrix:
+        commit_filename:
+          - devcard.svg
+          - devcard.png
+
+
+    steps:
+      -
+        name: Checkout code
+        uses: actions/checkout@v2.3.4
+
+      - name: Modify action.yaml
+        run: |
+          sed -E 's|docker://ghcr.io/dailydotdev/action-devcard:[0-9\.]+|Dockerfile|i' action.yml > local-action.yml
+          mv -f local-action.yml action.yml
+
+      -
+        name: Run location action
+        uses: ./
+        with:
+          devcard_id: ${{ secrets.DEVCARD_ID }}
+          commit_filename: ${{ matrix.commit_filename }}
+          dryrun: true
