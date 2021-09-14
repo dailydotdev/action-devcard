@@ -65,6 +65,6 @@ jobs:
         name: Run location action
         uses: ./
         with:
-          devcard_id: ${{ secrets.DEVCARD_ID }}
+          devcard_id: 0b156485612243bfa39092f30071e276
           commit_filename: ${{ matrix.commit_filename }}
           dryrun: true
