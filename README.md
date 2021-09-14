@@ -2,6 +2,7 @@
 
 [![GitHub](https://img.shields.io/github/license/dailydotdev/action-devcard)](LICENSE)
 [![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/dailydotdev/action-devcard/continuous-integration?event=push&label=continuous-integration&logo=github)](https://github.com/dailydotdev/action-devcard/actions/workflows/continuous-integration.yml)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/dailydotdev/action-devcard?logo=github)](https://github.com/dailydotdev/action-devcard/releases/latest)
 
 ## Example usasge
 
