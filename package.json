@@ -22,7 +22,7 @@
   "bugs": "https://github.com/dailydotdev/action-devcard/issues",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@actions/core": "^1.5.0",
+    "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
     "jsdom": "^17.0.0",
     "node-fetch": "^3.0.0",
