@@ -27,7 +27,7 @@
     "jsdom": "^17.0.0",
     "node-fetch": "^3.0.0",
     "sharp": "^0.29.1",
-    "simple-git": "^2.45.1",
+    "simple-git": "^2.46.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
