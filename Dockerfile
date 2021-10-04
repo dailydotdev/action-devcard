@@ -1,5 +1,5 @@
 # -- BUILD STAGE --------------------------------
-FROM node:16.9.1-slim AS build
+FROM node:16.10.0-slim AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /src
 
@@ -14,7 +14,7 @@ COPY src ./src/
 RUN yarn build
 
 # -- RUNTIME STAGE --------------------------------
-FROM node:16.9.1-slim
+FROM node:16.10.0-slim
 ENTRYPOINT [ "node" ]
 WORKDIR /app
 
