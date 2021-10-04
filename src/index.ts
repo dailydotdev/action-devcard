@@ -111,6 +111,8 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 			console.log('Committer account', '(github-actions)')
 		}
 
+		console.log('Using branch', committer.branch)
+
 		//Create head branch if needed
 		try {
 			await octokit.rest.git.getRef({ ...github.context.repo, ref: `heads/${committer.branch}` })
