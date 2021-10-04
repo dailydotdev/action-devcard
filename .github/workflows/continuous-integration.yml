@@ -87,6 +87,7 @@ jobs:
         with:
           devcard_id: 0b156485612243bfa39092f30071e276
           commit_filename: devcard.svg
+          commit_branch: main
           dryrun: true
 
       -
@@ -95,4 +96,5 @@ jobs:
         with:
           devcard_id: 0b156485612243bfa39092f30071e276
           commit_filename: devcard.png
+          commit_branch: main
           dryrun: true
