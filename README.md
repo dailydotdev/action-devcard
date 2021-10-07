@@ -23,7 +23,7 @@
 
 ### Optional
 
-- `devcard_id`: GitHub Token used to commit the devcard
+- `token`: GitHub Token used to commit the devcard
 - `commit_branch`: The branch to commit the devcard to. Defaults to the branch of the action.
 - `commit_message`: The commit message to use when committing the devcard. Defaults to `Update ${filename}`.
   - You can use `${filename}` in the message to refer to the filename of the devcard.
