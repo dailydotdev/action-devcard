@@ -24,7 +24,7 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
-    "jsdom": "^17.0.0",
+    "jsdom": "^18.0.0",
     "node-fetch": "^3.0.0",
     "sharp": "^0.29.1",
     "simple-git": "^2.46.0",
