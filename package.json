@@ -1,6 +1,6 @@
 {
   "name": "action-devcard",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "GitHub Action to download the devcard from daily.dev",
   "private": true,
   "author": {
