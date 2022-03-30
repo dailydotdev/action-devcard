@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.6] - 2022-03-30
+
+- chore: bump actions/setup-node from 2.5.0 to 2.5.1 ([#89](https://github.com/dailydotdev/action-devcard/pull/89))
+- docs: fix spelling in `README.md` ([#91](https://github.com/dailydotdev/action-devcard/pull/91))
+- chore: only run dependabot weekly
+- chore(deps): bump dependencies
+
 ## [2.0.5] - 2021-12-17
 
 - chore(deps): bump dependencies
@@ -63,7 +70,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release [`1854869`](https://github.com/dailydotdev/action-devcard/commit/1854869)
 
-[Unreleased]: https://github.com/dailydotdev/action-devcard/compare/2.0.5...HEAD
+[Unreleased]: https://github.com/dailydotdev/action-devcard/compare/2.0.6...HEAD
+[2.0.6]: https://github.com/dailydotdev/action-devcard/compare/2.0.5...2.0.7
 [2.0.5]: https://github.com/dailydotdev/action-devcard/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/dailydotdev/action-devcard/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/dailydotdev/action-devcard/compare/2.0.2...2.0.3
