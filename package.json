@@ -23,7 +23,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
+    "@actions/github": "^5.0.1",
     "jsdom": "^19.0.0",
     "node-fetch": "^3.2.3",
     "sharp": "^0.30.3",
