@@ -7,10 +7,16 @@
 ## Example usage
 
 ```yaml
-- name: devcard
-  uses: dailydotdev/action-devcard@2.0.6
-  with:
-    devcard_id: ${{ secrets.DEVCARD_ID }}
+jobs:
+  devcard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: devcard
+        uses: dailydotdev/action-devcard@2.0.6
+        with:
+          devcard_id: ${{ secrets.DEVCARD_ID }}
 ```
 
 ## Action options
@@ -36,13 +42,19 @@
 This will save the devcard as PNG and commit to a separate branch named `devcard`.
 
 ```yaml
-- name: devcard
-   uses: dailydotdev/action-devcard@2.0.6
-   with:
-     devcard_id: ${{ secrets.DEVCARD_ID }}
-     commit_branch: devcard
-     commit_filename: devcard.png
-     commit_message: "chore: update ${filename}"
+jobs:
+  devcard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: devcard
+        uses: dailydotdev/action-devcard@2.0.6
+        with:
+          devcard_id: ${{ secrets.DEVCARD_ID }}
+          commit_branch: devcard
+          commit_filename: devcard.png
+          commit_message: "chore: update ${filename}"
 ```
 
 ## Keep up-to-date with GitHub Dependabot
