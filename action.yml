@@ -36,4 +36,4 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/dailydotdev/action-devcard:2.0.6'
+  image: 'docker://ghcr.io/dailydotdev/action-devcard:2.1.0'
