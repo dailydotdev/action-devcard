@@ -98,3 +98,9 @@ jobs:
           commit_filename: devcard.png
           commit_branch: main
           dryrun: true
+
+  dependabot:
+    needs:
+      - lint-build
+      - test-local-action
+    uses: ./.github/workflows/dependabot-automerge.yaml

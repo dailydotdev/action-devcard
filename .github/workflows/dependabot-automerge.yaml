@@ -1,0 +1,52 @@
+name: Approve and enable auto-merge for Dependabot PRs
+
+on:
+  workflow_call:
+  pull_request:
+    paths:
+      - '.github/workflows/dependabot-automerge.yaml'
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.3.6
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # Direct dev dependencies
+      - name: Approve PR and auto-merge all dev-dependencies
+        if: ${{contains(steps.metadata.outputs.dependency-type, 'direct:development')}}
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+
+      # Direct prod dependencies
+      - name: Approve PR and auto-merge prod-dependencies (only patches)
+        if: ${{contains(steps.metadata.outputs.dependency-type, 'direct:production') && steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+
+      # Indirect dependencies
+      - name: Approve PR and auto-merge all indirect dependencies
+        if: ${{contains(steps.metadata.outputs.dependency-type, 'indirect') && steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
