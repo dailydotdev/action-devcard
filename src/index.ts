@@ -1,5 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
+import type { GraphQlQueryResponseData } from '@octokit/graphql'
+
 import sgit from 'simple-git'
 import fetch from 'node-fetch'
 import fs from 'fs/promises'
@@ -142,7 +144,7 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 				repository: {
 					object: { oid },
 				},
-			} = await octokit.graphql(
+			} = await octokit.graphql<GraphQlQueryResponseData>(
 				`
 				query Sha {
 					repository(owner: "${github.context.repo.owner}", name: "${github.context.repo.repo}") {
