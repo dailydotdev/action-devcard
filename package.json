@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "lint": "eslint 'src/**/*.ts' --cache",
-    "build": "ncc build --out dist --target es2020 --license license.txt src/index.ts"
+    "build": "ncc build --out dist --target es2023 --minify --license license.txt src/index.ts"
   },
   "main": "src/index.ts",
   "repository": "github:dailydotdev/action-devcard",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/jsdom": "21.x",
-    "@types/node": "18.x",
+    "@types/node": "16.x",
     "@types/sharp": "0.31.x",
     "@types/uuid": "9.x",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
