@@ -17,11 +17,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    permissions:
+      id-token: write # Enable OIDC
+      pull-requests: write
+      contents: write
 
     steps:
       -
         name: Checkout code
         uses: actions/checkout@v3.4.0
+
+      - uses: chainguard-dev/actions/setup-gitsign@main
 
       -
         uses: actions/setup-node@v3.6.0
@@ -47,8 +53,7 @@ jobs:
 
       - name: Setup git
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global tag.gpgsign true
 
       -
         name: Build
@@ -57,13 +62,12 @@ jobs:
           git add -A dist
 
       - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           npm version ${{ github.event.inputs.version }} --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           git commit -m "release: $VERSION" -a
-          git tag "$VERSION" -m "release: $VERSION"
-          git push --follow-tags
+          git push
 
-      -
-        name: GitHub Release
-        uses: softprops/action-gh-release@v0.1.15
+          gh release create $VERSION --generate-notes
