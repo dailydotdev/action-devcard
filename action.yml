@@ -35,5 +35,5 @@ inputs:
     required: false
 
 runs:
-  using: 'docker'
-  image: 'docker://ghcr.io/dailydotdev/action-devcard:2.1.0'
+  using: 'node16'
+  main: "dist/index.js"
