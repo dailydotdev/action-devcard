@@ -24,25 +24,25 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "jsdom": "^21.1.1",
-    "node-fetch": "^3.3.1",
-    "sharp": "^0.32.0",
-    "simple-git": "^3.17.0",
-    "uuid": "^9.0.0"
+    "jsdom": "^22.1.0",
+    "node-fetch": "^3.3.2",
+    "sharp": "^0.32.6",
+    "simple-git": "^3.20.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/jsdom": "21.x",
-    "@types/node": "16.x",
-    "@types/sharp": "0.31.x",
+    "@types/node": "20.x",
+    "@types/sharp": "0.32.x",
     "@types/uuid": "9.x",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
-    "@vercel/ncc": "0.36.1",
-    "dotenv": "^16.0.3",
-    "eslint": "^8.36.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vercel/ncc": "0.38.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7",
-    "typescript": "^5.0.2"
+    "prettier": "^2.8.8",
+    "typescript": "^5.2.2"
   }
 }
