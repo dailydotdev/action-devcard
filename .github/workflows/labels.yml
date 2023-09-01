@@ -19,4 +19,4 @@ jobs:
 
       -
         name: Run Labeler
-        uses: crazy-max/ghaction-github-labeler@v4.1.0
+        uses: crazy-max/ghaction-github-labeler@v4.2.0
