@@ -26,7 +26,7 @@
     "@actions/github": "^5.1.1",
     "jsdom": "^22.1.0",
     "node-fetch": "^3.3.2",
-    "sharp": "^0.32.5",
+    "sharp": "^0.32.6",
     "simple-git": "^3.19.1",
     "uuid": "^9.0.1"
   },
