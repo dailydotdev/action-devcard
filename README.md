@@ -35,6 +35,8 @@ jobs:
   - You can use `${filename}` in the message to refer to the filename of the devcard.
 - `commit_filename`: The filename to commit the devcard to. Defaults to `devcard.svg`.
   - If you want to save the devcard as a PNG, you can use `devcard.png` instead, or any other filename ending in `.png`.
+- `committer_email`: The committer email used in commit. Defaults to `noreply@github.com`.
+- `committer_name`: The committer name used in commit. Defaults to `github-actions[bot]`.
 - `dryrun`: If set to `true`, the action will run as normal, but not actually commit the devcard
 
 ## Advanced usage
