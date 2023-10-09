@@ -29,6 +29,16 @@ inputs:
     default: devcard.svg
     required: false
 
+  commit_username:
+    description: Commit username
+    default: x
+    required: false
+
+  commit_email:
+    description: Commit email
+    default: @github-actions
+    required: false
+
   dryrun:
     description: 'If true, no changes will be made to the repo'
     default: false

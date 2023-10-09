@@ -54,6 +54,8 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 		const branch = core.getInput('commit_branch')
 		const message = core.getInput('commit_message')
 		const filename = core.getInput('commit_filename')
+		const email = core.getInput('commit_email')
+		const username = core.getInput('commit_username')
 		const dryrun = core.getBooleanInput('dryrun')
 
 		// throw an error if filename is empty
@@ -103,6 +105,8 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 			message: message.replace(/[$][{]filename[}]/g, filename),
 			branch: branch || github.context.ref.replace(/^refs[/]heads[/]/, ''),
 			sha: undefined,
+			email: email,
+			username: username,
 		}
 
 		const octokit = github.getOctokit(token)
@@ -177,6 +181,7 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 				message: committer.message,
 				content: fileContent.toString('base64'),
 				branch: committer.branch,
+				author: { name: committer.username, email: committer.email },
 				...(committer.sha ? { sha: committer.sha } : {}),
 			})
 		}
