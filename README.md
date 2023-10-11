@@ -14,7 +14,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@2.2.0
+        uses: dailydotdev/action-devcard@2.3.0
         with:
           devcard_id: ${{ secrets.DEVCARD_ID }}
 ```
@@ -51,7 +51,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@2.2.0
+        uses: dailydotdev/action-devcard@2.3.0
         with:
           devcard_id: ${{ secrets.DEVCARD_ID }}
           commit_branch: devcard
