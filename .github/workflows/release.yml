@@ -55,6 +55,13 @@ jobs:
         run: |
           git config --global tag.gpgsign true
 
+      - name: Bump version
+        run: |
+          OLD_VERSION=$(node -p "require('./package.json').version")
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          sed -i "s/$OLD_VERSION/$VERSION/g" README.md
+
       -
         name: Build
         run: |
@@ -65,7 +72,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           git commit -m "release: $VERSION" -a
           git push
