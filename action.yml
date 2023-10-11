@@ -29,6 +29,16 @@ inputs:
     default: devcard.svg
     required: false
 
+  committer_email:
+    description: Committer email
+    default: 41898282+github-actions[bot]@users.noreply.github.com
+    required: false
+
+  committer_name:
+    description: Committer name
+    default: github-actions[bot]
+    required: false
+
   dryrun:
     description: 'If true, no changes will be made to the repo'
     default: false
