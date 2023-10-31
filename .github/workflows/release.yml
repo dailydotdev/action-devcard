@@ -63,6 +63,11 @@ jobs:
           sed -i "s/$OLD_VERSION/$VERSION/g" README.md
 
       -
+        name: Prune dist
+        run: |
+          rm -rf dist
+
+      -
         name: Build
         run: |
           yarn build
