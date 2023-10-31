@@ -14,7 +14,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@2.3.0
+        uses: dailydotdev/action-devcard@2.3.1
         with:
           devcard_id: ${{ secrets.DEVCARD_ID }}
 ```
@@ -24,7 +24,7 @@ jobs:
 ### Required
 
 - `devcard_id`: this is the unique hash of the devcard, it can be found in the URL of the devcard.
-  - e.g. `https://api.daily.dev/devcards/0b156485612243bfa39092f30071e276.png` where the devcard_id is `0b156485612243bfa39092f30071e276`
+  - e.g. `https://api.daily.dev/devcards/0b156485612243bfa39092.3.171e276.png` where the devcard_id is `0b156485612243bfa39092.3.171e276`
   - Can be found at [https://app.daily.dev/devcard](https://app.daily.dev/devcard)
 
 ### Optional
@@ -51,7 +51,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@2.3.0
+        uses: dailydotdev/action-devcard@2.3.1
         with:
           devcard_id: ${{ secrets.DEVCARD_ID }}
           commit_branch: devcard
