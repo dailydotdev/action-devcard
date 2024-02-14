@@ -2,8 +2,8 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 import type { GraphQlQueryResponseData } from '@octokit/graphql'
 
-import { Readable } from 'stream';
-import { finished } from 'stream/promises';
+import { Readable } from 'stream'
+import { finished } from 'stream/promises'
 
 import sgit from 'simple-git'
 import fs from 'fs/promises'
@@ -25,8 +25,6 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 
 ;(async function () {
 	try {
-		let devCardContent = ''
-
 		const devcard_id = core.getInput('devcard_id')
 		const token = core.getInput('token')
 		const branch = core.getInput('commit_branch')
@@ -49,12 +47,20 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 
 		// Fetch the latest devcard
 		try {
-			const res = await fetch(devcardURL(devcard_id))
+			const { body } = await fetch(devcardURL(devcard_id))
+			if (body === null) {
+				const message = `Empty response from devcard URL: ${devcardURL(devcard_id)}`
+				core.setFailed(message)
+				console.debug(message)
+				process.exit(1)
+			}
 
-			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), { recursive: true })
-			const stream = fs.createWriteStream(path.join(`/tmp`, filename))
-			await finished(Readable.fromWeb(res.body).pipe(stream))
-			await fs.writeFile(path.join(`/tmp`, filename), devCardContent)
+			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), {
+				recursive: true,
+			})
+			const file = await fs.open(path.join(`/tmp`, filename))
+			const stream = file.createWriteStream()
+			await finished(Readable.fromWeb(body).pipe(stream))
 			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
 		} catch (error) {
 			console.debug(error)
@@ -81,7 +87,10 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 
 		//Create head branch if needed
 		try {
-			await octokit.rest.git.getRef({ ...github.context.repo, ref: `heads/${committer.branch}` })
+			await octokit.rest.git.getRef({
+				...github.context.repo,
+				ref: `heads/${committer.branch}`,
+			})
 			console.log('Committer head branch status', 'ok')
 		} catch (error) {
 			if (/not found/i.test(`${error}`)) {
