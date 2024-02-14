@@ -23,9 +23,9 @@ jobs:
 
 ### Required
 
-- `devcard_id`: this is the unique hash of the devcard, it can be found in the URL of the devcard.
-  - e.g. `https://api.daily.dev/devcards/0b156485612243bfa39092.3.171e276.png` where the devcard_id is `0b156485612243bfa39092.3.171e276`
-  - Can be found at [https://app.daily.dev/devcard](https://app.daily.dev/devcard)
+- `devcard_id`: this is the unique id of the devcard, it can be found in the URL of the devcard or [here](https://app.daily.dev/api/id).
+  - e.g. `https://api.daily.dev/devcards/v2/0b156485612243bfa39092.3.171e276.png` where the devcard_id is `0b156485612243bfa39092.3.171e276`
+  - Can be found at [https://app.daily.dev/api/id](https://app.daily.dev/api/id)
 
 ### Optional
 
@@ -33,8 +33,8 @@ jobs:
 - `commit_branch`: The branch to commit the devcard to. Defaults to the branch of the action.
 - `commit_message`: The commit message to use when committing the devcard. Defaults to `Update ${filename}`.
   - You can use `${filename}` in the message to refer to the filename of the devcard.
-- `commit_filename`: The filename to commit the devcard to. Defaults to `devcard.svg`.
-  - If you want to save the devcard as a PNG, you can use `devcard.png` instead, or any other filename ending in `.png`.
+- `commit_filename`: The filename to commit the devcard to. Defaults to `devcard.png`.
+  - You can also use any other filename ending in `.png`.
 - `committer_email`: The committer email used in commit. Defaults to `noreply@github.com`.
 - `committer_name`: The committer name used in commit. Defaults to `github-actions[bot]`.
 - `dryrun`: If set to `true`, the action will run as normal, but not actually commit the devcard

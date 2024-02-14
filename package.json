@@ -11,6 +11,10 @@
     {
       "name": "Ole-Martin Bratteng",
       "email": "ole-martin@bratteng.com"
+    },
+    {
+      "name": "Milan Freml",
+      "email": "kopancek@gmail.com"
     }
   ],
   "scripts": {
@@ -24,17 +28,12 @@
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
-    "jsdom": "^22.1.0",
     "node-fetch": "^3.3.2",
-    "sharp": "^0.32.6",
-    "simple-git": "^3.20.0",
-    "uuid": "^9.0.1"
+    "simple-git": "^3.20.0"
   },
   "devDependencies": {
     "@types/jsdom": "21.x",
     "@types/node": "20.x",
-    "@types/sharp": "0.32.x",
-    "@types/uuid": "9.x",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.20.0",
     "@vercel/ncc": "0.38.1",
@@ -44,5 +43,6 @@
     "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.2.4",
     "typescript": "^5.3.3"
-  }
+  },
+  "packageManager": "yarn@4.1.0"
 }

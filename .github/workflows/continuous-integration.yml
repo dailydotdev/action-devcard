@@ -20,6 +20,10 @@ jobs:
         uses: actions/checkout@v4
 
       -
+        name: Enable Corepack
+        run: corepack enable
+
+      -
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
@@ -39,7 +43,7 @@ jobs:
         name: Install dependencies
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
 
       -
         name: Lint
@@ -52,19 +56,10 @@ jobs:
           yarn build
 
       -
-        name: devcard.svg
-        uses: ./
-        with:
-          devcard_id: 0b156485612243bfa39092f30071e276
-          commit_filename: devcard.svg
-          commit_branch: main
-          dryrun: true
-
-      -
         name: devcard.png
         uses: ./
         with:
-          devcard_id: 0b156485612243bfa39092f30071e276
+          devcard_id: XDCZD-PHG
           commit_filename: devcard.png
           commit_branch: main
           dryrun: true
