@@ -2,42 +2,20 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 import type { GraphQlQueryResponseData } from '@octokit/graphql'
 
+import { Readable } from 'stream';
+import { finished } from 'stream/promises';
+
 import sgit from 'simple-git'
-import fetch from 'node-fetch'
 import fs from 'fs/promises'
 import path from 'path'
-import jsdom from 'jsdom'
-import sharp from 'sharp'
 import { validate } from 'uuid'
 
 process.on('unhandledRejection', (error) => {
 	throw error
 })
 
-const convertImageToBase64 = async (url: string): Promise<string> => {
-	const resp = await fetch(url)
-	const contentType = resp.headers.get('content-type')
-
-	return `data:${contentType};base64,${(await resp.buffer()).toString('base64')}`
-}
-
-const fetchImagesFromSVG = async (svg: string): Promise<Record<string, string>> => {
-	const dom = new jsdom.JSDOM(svg)
-
-	dom.serialize()
-
-	const images: Record<string, string> = {}
-
-	dom.window.document.querySelectorAll('image').forEach((image) => {
-		const src = image.getAttribute('xlink:href')
-		src && (images[src] = src)
-	})
-
-	return images
-}
-
 const devcardURL = (devcard_id: string): string =>
-	`https://api.daily.dev/devcards/${devcard_id}.svg?r=${new Date().valueOf()}&ref=action`
+	`https://api.daily.dev/devcards/v2/${devcard_id}.png?r=${new Date().valueOf()}&ref=action`
 
 const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 	// An UUIDv4 regex without hyphens
@@ -72,29 +50,11 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 		// Fetch the latest devcard
 		try {
 			const res = await fetch(devcardURL(devcard_id))
-			devCardContent = await res.text()
-			const images = await fetchImagesFromSVG(devCardContent)
-
-			for (const image in images) {
-				if (Object.prototype.hasOwnProperty.call(images, image)) {
-					devCardContent = devCardContent.replace(image, await convertImageToBase64(images[image]))
-				}
-			}
 
 			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), { recursive: true })
+			const stream = fs.createWriteStream(path.join(`/tmp`, filename))
+			await finished(Readable.fromWeb(res.body).pipe(stream))
 			await fs.writeFile(path.join(`/tmp`, filename), devCardContent)
-
-			if (filename.endsWith('.png')) {
-				await sharp(path.join(`/tmp`, filename))
-					.png({
-						quality: 100,
-					})
-					.toFile(path.join(`/tmp`, `_${filename}`))
-
-				await fs.rename(path.join(`/tmp`, `_${filename}`), path.join(`/tmp`, filename))
-				console.log('Converted devcard to PNG', 'ok')
-			}
-
 			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
 		} catch (error) {
 			console.debug(error)
