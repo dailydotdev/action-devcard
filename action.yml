@@ -5,8 +5,8 @@ branding:
   icon: user-check
   color: gray-dark
 inputs:
-  devcard_id:
-    description: 'The ID of the devcard'
+  user_id:
+    description: 'Your daily.dev user id'
     required: true
 
   token:

@@ -59,7 +59,7 @@ jobs:
         name: devcard.png
         uses: ./
         with:
-          devcard_id: XDCZD-PHG
+          user_id: XDCZD-PHG
           commit_filename: devcard.png
           commit_branch: main
           dryrun: true

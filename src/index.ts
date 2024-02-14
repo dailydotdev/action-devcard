@@ -13,12 +13,12 @@ process.on('unhandledRejection', (error) => {
 	throw error
 })
 
-const devcardURL = (devcard_id: string): string =>
-	`https://api.daily.dev/devcards/v2/${devcard_id}.png?r=${new Date().valueOf()}&ref=action`
+const devcardURL = (user_id: string): string =>
+	`https://api.daily.dev/devcards/v2/${user_id}.png?r=${new Date().valueOf()}&ref=action`
 
 ;(async function () {
 	try {
-		const devcard_id = core.getInput('devcard_id')
+		const user_id = core.getInput('user_id')
 		const token = core.getInput('token')
 		const branch = core.getInput('commit_branch')
 		const message = core.getInput('commit_message')
@@ -36,9 +36,9 @@ const devcardURL = (devcard_id: string): string =>
 
 		// Fetch the latest devcard
 		try {
-			const { body } = await fetch(devcardURL(devcard_id))
+			const { body } = await fetch(devcardURL(user_id))
 			if (body === null) {
-				const message = `Empty response from devcard URL: ${devcardURL(devcard_id)}`
+				const message = `Empty response from devcard URL: ${devcardURL(user_id)}`
 				core.setFailed(message)
 				console.debug(message)
 				process.exit(1)
