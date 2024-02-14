@@ -8,7 +8,6 @@ import { finished } from 'stream/promises'
 import sgit from 'simple-git'
 import fs from 'fs/promises'
 import path from 'path'
-import { validate } from 'uuid'
 
 process.on('unhandledRejection', (error) => {
 	throw error
@@ -16,12 +15,6 @@ process.on('unhandledRejection', (error) => {
 
 const devcardURL = (devcard_id: string): string =>
 	`https://api.daily.dev/devcards/v2/${devcard_id}.png?r=${new Date().valueOf()}&ref=action`
-
-const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
-	// An UUIDv4 regex without hyphens
-	const uuid4Regex = /^([0-9A-F]{8})([0-9A-F]{4})(4[0-9A-F]{3})([89AB][0-9A-F]{3})([0-9A-F]{12})$/i
-	return validate(devcard_id.replace(uuid4Regex, '$1-$2-$3-$4-$5'))
-}
 
 ;(async function () {
 	try {
@@ -37,10 +30,6 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 		// throw an error if filename is empty
 		if (!filename || filename.length === 0) {
 			throw new Error('Filename is required')
-		}
-
-		if (!validateDevcardIdAsUUID(devcard_id)) {
-			throw new Error(`Invalid devcard_id: ${devcard_id}`)
 		}
 
 		console.log(`Dryrun`, dryrun)
