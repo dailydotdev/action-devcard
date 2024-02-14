@@ -1,8 +1,8 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import type { GraphQlQueryResponseData } from '@octokit/graphql'
+import fetch from 'node-fetch'
 
-import { Readable } from 'stream'
 import { finished } from 'stream/promises'
 
 import sgit from 'simple-git'
@@ -58,9 +58,10 @@ const validateDevcardIdAsUUID = (devcard_id: string): boolean => {
 			await fs.mkdir(path.dirname(path.join(`/tmp`, filename)), {
 				recursive: true,
 			})
-			const file = await fs.open(path.join(`/tmp`, filename))
+			const file = await fs.open(path.join(`/tmp`, filename), 'w')
 			const stream = file.createWriteStream()
-			await finished(Readable.fromWeb(body).pipe(stream))
+			await finished(body.pipe(stream))
+			await file.close()
 			console.log(`Saved to ${path.join(`/tmp`, filename)}`, 'ok')
 		} catch (error) {
 			console.debug(error)
