@@ -56,19 +56,10 @@ jobs:
           yarn build
 
       -
-        name: devcard.svg
-        uses: ./
-        with:
-          devcard_id: 0b156485612243bfa39092f30071e276
-          commit_filename: devcard.svg
-          commit_branch: main
-          dryrun: true
-
-      -
         name: devcard.png
         uses: ./
         with:
-          devcard_id: 0b156485612243bfa39092f30071e276
+          devcard_id: XDCZD-PHG
           commit_filename: devcard.png
           commit_branch: main
           dryrun: true
