@@ -23,9 +23,9 @@ jobs:
 
 ### Required
 
-- `devcard_id`: this is the unique id of the devcard, it can be found in the URL of the devcard.
+- `devcard_id`: this is the unique id of the devcard, it can be found in the URL of the devcard or [here](https://app.daily.dev/api/id).
   - e.g. `https://api.daily.dev/devcards/v2/0b156485612243bfa39092.3.171e276.png` where the devcard_id is `0b156485612243bfa39092.3.171e276`
-  - Can be found at [https://app.daily.dev/devcard](https://app.daily.dev/devcard)
+  - Can be found at [https://app.daily.dev/api/id](https://app.daily.dev/api/id)
 
 ### Optional
 
