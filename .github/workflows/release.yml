@@ -30,6 +30,10 @@ jobs:
       - uses: chainguard-dev/actions/setup-gitsign@main
 
       -
+        name: Enable Corepack
+        run: corepack enable
+
+      -
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
@@ -49,7 +53,7 @@ jobs:
         name: Install dependencies
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
 
       - name: Setup git
         run: |
