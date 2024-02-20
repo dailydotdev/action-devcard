@@ -10,8 +10,8 @@ inputs:
     required: true
 
   type:
-    description: 'Configure orientation for devcard. Must be either "Vertical" or "Horizontal"'
-    default: Vertical
+    description: 'Configure orientation for devcard. Must be either "default" or "wide"'
+    default: default
     required: false
 
   token:
