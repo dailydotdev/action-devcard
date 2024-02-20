@@ -29,6 +29,9 @@ jobs:
 
 ### Optional
 
+- `type`: Configure orientation for devcard
+  - `default`: Vertical (Default)
+  - `wide`: Horizontal
 - `token`: GitHub Token used to commit the devcard
 - `commit_branch`: The branch to commit the devcard to. Defaults to the branch of the action.
 - `commit_message`: The commit message to use when committing the devcard. Defaults to `Update ${filename}`.
