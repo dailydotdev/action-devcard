@@ -9,6 +9,11 @@ inputs:
     description: 'Your daily.dev user id'
     required: true
 
+  type:
+    description: 'Configure orientation for devcard. Must be either "default" or "wide"'
+    default: default
+    required: false
+
   token:
     description: GitHub Token used to commit the devcard
     default: ${{ github.token }}

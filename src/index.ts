@@ -13,12 +13,15 @@ process.on('unhandledRejection', (error) => {
 	throw error
 })
 
-const devcardURL = (user_id: string): string =>
-	`https://api.daily.dev/devcards/v2/${user_id}.png?r=${new Date().valueOf()}&ref=action`
+type DevCardType = 'default' | 'wide'
+
+const devcardURL = (user_id: string, type: DevCardType = 'default'): string =>
+	`https://api.daily.dev/devcards/v2/${user_id}.png?type=${type}&r=${new Date().valueOf()}&ref=action`
 
 ;(async function () {
 	try {
 		const user_id = core.getInput('user_id')
+		const type = core.getInput('type') as DevCardType
 		const token = core.getInput('token')
 		const branch = core.getInput('commit_branch')
 		const message = core.getInput('commit_message')
@@ -32,13 +35,18 @@ const devcardURL = (user_id: string): string =>
 			throw new Error('Filename is required')
 		}
 
+		// throw an error if type is invalid, must be either "default" or "wide"
+		if (type && !['default', 'wide'].includes(type)) {
+			throw new Error('Invalid type. Must be either "default" or "wide"')
+		}
+
 		console.log(`Dryrun`, dryrun)
 
 		// Fetch the latest devcard
 		try {
-			const { body } = await fetch(devcardURL(user_id))
+			const { body } = await fetch(devcardURL(user_id, type))
 			if (body === null) {
-				const message = `Empty response from devcard URL: ${devcardURL(user_id)}`
+				const message = `Empty response from devcard URL: ${devcardURL(user_id, type)}`
 				core.setFailed(message)
 				console.debug(message)
 				process.exit(1)
