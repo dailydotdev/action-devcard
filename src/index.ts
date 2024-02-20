@@ -13,9 +13,12 @@ process.on('unhandledRejection', (error) => {
 	throw error
 })
 
-type DevCardType = 'default' | 'wide'
+enum DevCardType {
+	Vertical = 'default',
+	Horizontal = 'wide',
+}
 
-const devcardURL = (user_id: string, type: DevCardType = 'default'): string =>
+const devcardURL = (user_id: string, type: DevCardType = DevCardType.Vertical): string =>
 	`https://api.daily.dev/devcards/v2/${user_id}.png?type=${type}&r=${new Date().valueOf()}&ref=action`
 
 ;(async function () {
@@ -36,8 +39,8 @@ const devcardURL = (user_id: string, type: DevCardType = 'default'): string =>
 		}
 
 		// throw an error if type is invalid, must be either "default" or "wide"
-		if (type && !['default', 'wide'].includes(type)) {
-			throw new Error('Invalid type. Must be either "default" or "wide"')
+		if (type && !Object.values(DevCardType).includes(type)) {
+			throw new Error('Invalid type')
 		}
 
 		console.log(`Dryrun`, dryrun)
