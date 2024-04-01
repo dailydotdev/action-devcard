@@ -35,7 +35,7 @@
     "@types/jsdom": "21.x",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "@vercel/ncc": "0.38.1",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
