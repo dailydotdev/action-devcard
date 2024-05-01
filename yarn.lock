@@ -585,7 +585,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     node-fetch: "npm:^3.3.2"
     prettier: "npm:^3.2.4"
-    simple-git: "npm:^3.20.0"
+    simple-git: "npm:^3.24.0"
     typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
@@ -2027,14 +2027,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:^3.20.0":
-  version: 3.22.0
-  resolution: "simple-git@npm:3.22.0"
+"simple-git@npm:^3.24.0":
+  version: 3.24.0
+  resolution: "simple-git@npm:3.24.0"
   dependencies:
     "@kwsites/file-exists": "npm:^1.1.1"
     "@kwsites/promise-deferred": "npm:^1.1.1"
     debug: "npm:^4.3.4"
-  checksum: 10c0/cc12f7563e4de82a48c1b2517d5471f699b4e12ff25843d230854b6d8d567ca8ee9d6e6b40aa6aae214e956040563902c9a406e798df03b435fe863b829d0cc5
+  checksum: 10c0/4329e5be1a7af1ebb476354ed6edf6d2828dc221e15d22ce3e5e8028f537d5e9ac059d813911516f78e22dfa2ee4db4c8cf30bf912bd284e530b733bd6b5c3a0
   languageName: node
   linkType: hard
 
