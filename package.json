@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/jsdom": "21.x",
     "@types/node": "22.x",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^7.14.1",
     "@vercel/ncc": "0.38.1",
     "dotenv": "^16.4.5",
