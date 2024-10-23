@@ -23,37 +23,35 @@ jobs:
       contents: write
 
     steps:
-      -
-        name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - uses: chainguard-dev/actions/setup-gitsign@main
 
-      -
-        name: Enable Corepack
+      - name: Enable Corepack
         run: corepack enable
 
-      -
-        uses: actions/setup-node@v4.0.4
+      - uses: actions/setup-node@v4.0.4
         with:
-          node-version: 20
-          cache: yarn
+          node-version: 22
+          cache: pnpm
+
+      - uses: pnpm/action-setup@v4.0.0
 
       - name: Cache node_modules
         id: cache-node_modules
         uses: actions/cache@v4.0.2
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-node_modules-
             ${{ runner.os }}-
 
-      -
-        name: Install dependencies
+      - name: Install dependencies
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: |
-          yarn install --immutable
+          pnpm install --frozen-lockfile
 
       - name: Setup git
         run: |
@@ -66,15 +64,13 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           sed -i "s/$OLD_VERSION/$VERSION/g" README.md
 
-      -
-        name: Prune dist
+      - name: Prune dist
         run: |
           rm -rf dist
 
-      -
-        name: Build
+      - name: Build
         run: |
-          yarn build
+          pnpm build
           git add -A dist
 
       - name: Publish
