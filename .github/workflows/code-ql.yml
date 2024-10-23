@@ -18,17 +18,14 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    -
-      name: Checkout repository
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    -
-      name: Initialize CodeQL
+    - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: javascript
         config-file: ./.github/codeql/codeql-config.yml
 
-    -
-      name: Perform CodeQL Analysis
+    - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
