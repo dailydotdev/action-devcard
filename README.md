@@ -14,7 +14,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@3.1.0
+        uses: dailydotdev/action-devcard@3.2.0
         with:
           user_id: ${{ secrets.USER_ID }}
 ```
@@ -24,7 +24,7 @@ jobs:
 ### Required
 
 - `user_id`: this is the unique id of the devcard, it can be found in the URL of the devcard or [here](https://app.daily.dev/api/id).
-  - e.g. `https://api.daily.dev/devcards/v2/0b156485612243bfa39093.1.071e276.png` where the user_id is `0b156485612243bfa39093.1.071e276`
+  - e.g. `https://api.daily.dev/devcards/v2/0b156485612243bfa39093.2.071e276.png` where the user_id is `0b156485612243bfa39093.2.071e276`
   - Can be found at [https://app.daily.dev/api/id](https://app.daily.dev/api/id)
 
 ### Optional
@@ -54,7 +54,7 @@ jobs:
       contents: write
     steps:
       - name: devcard
-        uses: dailydotdev/action-devcard@3.1.0
+        uses: dailydotdev/action-devcard@3.2.0
         with:
           user_id: ${{ secrets.USER_ID }}
           commit_branch: devcard
