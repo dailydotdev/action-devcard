@@ -26,24 +26,24 @@
   "bugs": "https://github.com/dailydotdev/action-devcard/issues",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@actions/core": "^1.10.1",
+    "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
     "node-fetch": "^3.3.2",
-    "simple-git": "^3.20.0"
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
     "@octokit/graphql": "^8.1.1",
     "@types/jsdom": "21.x",
     "@types/node": "22.x",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^8.8.0",
-    "@vercel/ncc": "0.38.1",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "@vercel/ncc": "0.38.2",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }

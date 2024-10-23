@@ -35,7 +35,6 @@
 				"printWidth": 127
 			}
 		],
-		"@typescript-eslint/type-annotation-spacing": "error",
 		"@typescript-eslint/no-empty-function": "warn",
 		"@typescript-eslint/ban-ts-comment": "warn",
 		"@typescript-eslint/no-explicit-any": "warn",
