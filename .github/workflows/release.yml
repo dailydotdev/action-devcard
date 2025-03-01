@@ -36,7 +36,7 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@v4.1.0
 
       - name: Cache node_modules
         id: cache-node_modules
