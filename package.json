@@ -40,7 +40,7 @@
     "@vercel/ncc": "0.38.3",
     "dotenv": "^16.4.7",
     "eslint": "^8.57.1",
-    "eslint-config-prettier": "^10.0.1",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.5.2",
     "typescript": "^5.7.3"
