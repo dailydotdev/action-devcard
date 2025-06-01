@@ -35,7 +35,7 @@
     "@octokit/graphql": "^8.2.1",
     "@types/jsdom": "21.x",
     "@types/node": "22.x",
-    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.22.0",
     "@vercel/ncc": "0.38.3",
     "dotenv": "^16.4.7",
